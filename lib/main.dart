@@ -11,59 +11,30 @@ class XylophoneApp extends StatelessWidget {
       player.play('note$noteNumber.wav');
     }
 
+    Expanded _buildKeyAndNote({Color color, int noteNumber}) => Expanded(
+          child: FlatButton(
+            color: color,
+            onPressed: () {
+              _playNote(noteNumber);
+            },
+            child: Text(''),
+          ),
+        );
+
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          backgroundColor: Colors.indigo,
-          elevation: 5.0,
-        ),
+        backgroundColor: Colors.black,
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              FlatButton(
-                color: Colors.indigoAccent,
-                onPressed: () {
-                  _playNote(1);
-                },
-              ),
-              FlatButton(
-                color: Colors.blueGrey,
-                onPressed: () {
-                  _playNote(2);
-                },
-              ),
-              FlatButton(
-                color: Colors.green,
-                onPressed: () {
-                  _playNote(3);
-                },
-              ),
-              FlatButton(
-                color: Colors.purple,
-                onPressed: () {
-                  _playNote(4);
-                },
-              ),
-              FlatButton(
-                color: Colors.orange,
-                onPressed: () {
-                  _playNote(5);
-                },
-              ),
-              FlatButton(
-                color: Colors.indigo,
-                onPressed: () {
-                  _playNote(6);
-                },
-              ),
-              FlatButton(
-                color: Colors.red,
-                onPressed: () {
-                  _playNote(7);
-                },
-              ),
+              _buildKeyAndNote(color: Colors.redAccent, noteNumber: 1),
+              _buildKeyAndNote(color: Colors.white12, noteNumber: 2),
+              _buildKeyAndNote(color: Colors.green[800], noteNumber: 3),
+              _buildKeyAndNote(color: Colors.purple, noteNumber: 4),
+              _buildKeyAndNote(color: Colors.orange[900], noteNumber: 5),
+              _buildKeyAndNote(color: Colors.yellow[900], noteNumber: 6),
+              _buildKeyAndNote(color: Colors.blue[900], noteNumber: 7),
             ],
           ),
         ),
